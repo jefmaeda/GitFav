@@ -1,0 +1,78 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+    --ff-primary: 'Poppins', sans-serif;
+}
+
+body{
+    font-size: 1.6rem;
+    background-color: black;
+}
+
+body *{
+    color: white;
+    font-family: var(--ff-primary);
+}
+
+.sr-only{
+    /*step multi project*/
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/*app*/
+#app{
+    border: solid 1px red;
+    padding: 2rem;
+    width: max(50rem, 80%);
+    margin: 0 auto;
+}
+
+/*header*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 2.5rem 0;
+}
+
+header h1{
+    font-size: 2.5rem;
+}
+
+header .search{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.search input{
+    background-color: #263035;
+    border: 1px solid transparent;
+    height: 3.2rem;
+    border-radius: .4rem;
+    padding: 0 10rem 0 .8rem;
+}
+
+.search button{
+    text-transform: uppercase;
+    height: 3.2rem;
+    border-radius: .4rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    padding: 0 1rem;
+    background-color: rgb(23, 104, 93);
+}
