@@ -7,6 +7,15 @@
 :root{
     font-size: 62.5%;
     --ff-primary: 'Poppins', sans-serif;
+
+    --hue: 162;
+    --primary-color: hsl(var(--hue), 100%, 63%);
+    --button-color: hsl(var(--hue), 100%, 30%);
+    --th-color: hsl(var(--hue), 50%, 30%);
+    --tr-odd-color: hsla(var(--hue), 20%, 30%, 0.3);
+    --tr-even-color: hsla(var(--hue), 50%, 30%, 0.2);
+
+
 }
 
 body{
@@ -34,7 +43,6 @@ body *{
 
 /*app*/
 #app{
-    border: solid 1px red;
     padding: 2rem;
     width: max(50rem, 80%);
     margin: 0 auto;
@@ -74,5 +82,83 @@ header .search{
     border: 1px solid transparent;
     cursor: pointer;
     padding: 0 1rem;
-    background-color: rgb(23, 104, 93);
+    background-color: var(--button-color);
 }
+
+.search button:hover{
+    filter: brightness(1.1);
+}
+
+/*table*/
+table{
+    /* border: 1px solid rgb(23, 104, 93); */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table *{
+    font-size: 1.4rem;
+}
+
+/*t-header*/
+table th{
+    background-color: var(--th-color);
+    text-align: left;
+    font-weight: normal;
+    padding: 1.5rem;
+}
+
+table th:first-child{
+    border-top-left-radius: .4rem;
+}
+
+table th:last-child{
+    border-top-right-radius: .4rem;
+}
+
+table tr:nth-child(even){
+    background-color: var(--tr-even-color);
+}
+
+table tr:nth-child(odd){
+    background-color: var(--tr-odd-color);
+}
+
+/*t-date*/
+table td{
+    padding: 1.5rem;
+    text-align: left;
+}
+
+td.user{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+td.user img{
+    width: 5rem;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+td.user a{
+    text-decoration: none;
+}
+
+td.user a p{
+    font-weight: bold;
+}
+
+td .remove{
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: red;
+}
+
+/* tbody tr{
+    como faz a borda ?
+    border: solid 1px red;
+} */
