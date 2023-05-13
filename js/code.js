@@ -19,8 +19,6 @@ export class Favorites{
         this.root = document.querySelector(root)
         this.tbody = this.root.querySelector('table tbody')
         this.load()
-
-        // GithubUser.search('jefmaeda').then(user => console.log(user))
     }
 
     load(){
@@ -35,11 +33,28 @@ export class Favorites{
 
         this.entries = filteredEntries
         this.update()
+        this.save()
+    }
+
+    save(){
+        localStorage.setItem('@github-favorites:',JSON.stringify(this.entries))
     }
 
     async add(username){
-        const user = await GithubUser.search(username)
-        console.log(user)
+        try{
+            const user = await GithubUser.search(username)
+            
+            if (user.login === undefined) {
+                throw new Error('User is not found')
+            }
+
+            this.entries = [user, ...this.entries]
+            this.update()
+            this.save()
+
+        }catch(error){
+            alert(error.message)
+        }
     }
 }
 
