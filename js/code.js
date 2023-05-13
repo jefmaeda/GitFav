@@ -21,7 +21,7 @@ export class Favorites{
                 name: "may",
                 public_repos: '10056',
                 followers: '1500',
-                },
+            },
         ]
     }
 
@@ -70,6 +70,8 @@ export class FavoritesView extends Favorites{
             //push create html
             this.tbody.append(row)
         })
+
+        this.notUser()
     }
 
     removeAllTr(){
@@ -81,6 +83,7 @@ export class FavoritesView extends Favorites{
 
     createRow(){
         const tr = document.createElement('tr')
+        tr.classList.add("user-row")
 
         tr.innerHTML =`
         <td class="user">
@@ -98,5 +101,17 @@ export class FavoritesView extends Favorites{
         `
 
         return tr
+    }
+
+    notUser(){
+        const table = document.querySelector("table")
+        const emptyUser = document.querySelector(".not-user")
+        const rows = table.querySelectorAll(".user-row")
+
+        if (rows.length === 0) {
+            emptyUser.classList.remove("hidden")
+        } else {
+            emptyUser.classList.add("hidden")
+        }
     }
 }
