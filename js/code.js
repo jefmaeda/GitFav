@@ -1,17 +1,32 @@
 // class 0 search github
+export class GithubUser{
+    static search(username){
+        const endpoint = `https://api.github.com/users/${username}`
 
+        return fetch(endpoint)
+        .then(data => data.json())
+        .then(data => ({
+            login: data.login,
+            name: data.name,
+            public_repos: data.public_repos,
+            followers: data.followers,
+        }))
+    }
+}
 // class 1 table date
 export class Favorites{
     constructor(root){
         this.root = document.querySelector(root)
         this.tbody = this.root.querySelector('table tbody')
         this.load()
+
+        GithubUser.search('jefmaeda').then(user => console.log(user))
     }
 
     load(){
         this.entries = JSON.parse(localStorage.getItem
             ('@github-favorites:')) || []
-            
+
     }
 
     delete(user){
