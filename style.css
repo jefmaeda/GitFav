@@ -13,8 +13,8 @@
     --button-color: hsl(var(--hue), 100%, 30%);
     --th-color: hsl(var(--hue), 50%, 30%);
     --tr-odd-color: hsla(var(--hue), 20%, 30%, 0.3);
-    --tr-even-color: hsla(var(--hue), 50%, 30%, 0.2);
-
+    --tr-even-color: hsla(var(--hue), 90%, 63%, 0.2);
+    --tr-empty-color: hsla(var(--hue), 15%, 67%, 0.1);
 
 }
 
@@ -124,6 +124,12 @@ table tr:nth-child(odd){
     background-color: var(--tr-odd-color);
 }
 
+/* table tr:last-child td:first-child {
+    como colocar borda ?
+    background-color: transparent; 
+    border-bottom-left-radius: .9rem; 
+} */
+
 /*t-date*/
 table td{
     padding: 1.5rem;
@@ -162,3 +168,21 @@ td .remove{
     como faz a borda ?
     border: solid 1px red;
 } */
+
+/*not user*/
+.not-user{
+    padding: 5rem;
+    border-radius: 0 0 .4rem .4rem;
+    background-color: var(--tr-empty-color);
+}
+
+.not-user p{
+    text-align: center;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 2.5rem;
+    color: #485155;
+}
+.hidden{
+    display: none;
+}
