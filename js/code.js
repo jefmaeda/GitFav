@@ -20,7 +20,7 @@ export class Favorites{
         this.tbody = this.root.querySelector('table tbody')
         this.load()
 
-        GithubUser.search('jefmaeda').then(user => console.log(user))
+        // GithubUser.search('jefmaeda').then(user => console.log(user))
     }
 
     load(){
@@ -36,6 +36,11 @@ export class Favorites{
         this.entries = filteredEntries
         this.update()
     }
+
+    async add(username){
+        const user = await GithubUser.search(username)
+        console.log(user)
+    }
 }
 
 //class 2 view table
@@ -43,6 +48,16 @@ export class FavoritesView extends Favorites{
     constructor(root){
         super(root)
         this.update()
+        this.onadd()
+    }
+
+    onadd(){
+        const addButton = this.root.querySelector('.search button')
+        addButton.onclick = () => {
+            const {value} = this.root.querySelector('.search input')
+
+            this.add(value)
+        }
     }
 
     update(){
