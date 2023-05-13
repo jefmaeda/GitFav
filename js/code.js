@@ -1,18 +1,6 @@
 // class 0 search github
-export class GithubUser{
-    static search(username){
-        const endpoint = `https://api.github.com/users/${username}`
+import { GithubUser } from "./githubUser.js"
 
-        return fetch(endpoint)
-        .then(data => data.json())
-        .then(data => ({
-            login: data.login,
-            name: data.name,
-            public_repos: data.public_repos,
-            followers: data.followers,
-        }))
-    }
-}
 // class 1 table date
 export class Favorites{
     constructor(root){
@@ -42,6 +30,13 @@ export class Favorites{
 
     async add(username){
         try{
+
+            const userExists = this.entries.find(entry => entry.login === username)
+
+            if (userExists) {
+                throw new Error('User already registered')
+            }
+
             const user = await GithubUser.search(username)
             
             if (user.login === undefined) {
